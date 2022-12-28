@@ -1,0 +1,43 @@
+<html>
+
+<head>
+	<title>Home Page</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<h1><span th:text="${appName}">Our App</span>Cart</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th> Item name </th>
+				<th> Price </th>
+				<th> No of Item</th>
+				<th> Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${items.empty}">
+				<td colspan="2"> No Item Available </td>
+			</tr>
+			<tr th:each="items : ${items}">
+				<td><span th:text="${items.itemName}"> Item Name </span></td>
+				<td><span th:text="${items.price}"> Price </span></td>
+				<td><span th:text="${items.noofItem}"> No of Item </span></td>
+				<td><span th:text="${items.grossTotal}"> Gross Total </span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><span th:text="${grossvalue}"> Gross Price </span></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</body>
+
+</html>

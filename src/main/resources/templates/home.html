@@ -1,0 +1,61 @@
+<html>
+
+<head>
+	<title>Home Page</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<h1></h1>
+	<h1>Welcome to <span th:text="${appName}">Our App</span></h1>
+
+	<br>
+	<p>Please select the Item you want to buy</p>
+
+	
+	<form action="#" th:action="@{/addtocart}" th:object="${form}" method="post">
+		<fieldset>
+			<input type="submit" id="submitButton" th:value="Buy">
+			<input type="reset" id="resetButton" name="reset" th:value="Reset" />
+			<table class="table">
+				<thead>
+					<tr>
+						<th></th>
+						<th> Item name </th>
+						<th> Price </th>
+						<th> No of Item </th>
+					</tr>
+				</thead>
+				<tbody>
+					<!--<tr th:each="items, itemStat : *{items}">
+						<td><input th:field="*{items[__${itemStat.index}__].id}" /></td>
+						<td><span th:text="${items.itemName}"> Item Name </span></td>
+						<td><span th:text="${items.price}"> Price </span> /></td>
+						<td><input th:field="*{items[__${itemStat.index}__].quantity}" /></td>
+					</tr>-->
+
+					<tr th:each="item, itemStat : ${form.items}">
+						<td>
+							<input hidden="true" th:name="|items[${itemStat.index}].id|" th:value="${item.getId()}" />
+						</td>
+						<td>
+							<input disabled th:name="|items[${itemStat.index}].itemName|" th:value="${item.getItemName}" />
+						</td>
+						<td>
+							<input disabled th:name="|items[${itemStat.index}].price|" th:value="${item.getPrice()}" />
+						</td>
+						<td>
+							<input th:name="|items[${itemStat.index}].noofItem|" th:value="${item.getNoofItem()}" type="number" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+	</form>
+
+
+
+</body>
+
+</html>
