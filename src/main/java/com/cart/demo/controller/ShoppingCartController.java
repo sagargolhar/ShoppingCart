@@ -51,9 +51,8 @@ public class ShoppingCartController {
 		for (Item item : form.getItems()) {
 
 			Double price = itemservice.ItemList().get(item.getId() - 1).getPrice();
-			Double salesTax = (itemservice.ItemList().get(item.getId() - 1).getSaleTax()/100)+1;
 			Double grossAmt = (double) Math.round((item.getNoofItem() != null
-					? item.getNoofItem() * price * salesTax
+					? item.getNoofItem() * price
 					: 0.00) * 100) / 100;
 			Item fitem = itemservice.ItemList().get(item.getId() - 1);
 			fitem.setNoofItem(item.getNoofItem());
