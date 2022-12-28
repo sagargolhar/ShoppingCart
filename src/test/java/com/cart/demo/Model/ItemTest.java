@@ -18,7 +18,7 @@ class ItemTest {
     }
 
     @Test
-    public void testCalculateAppriasal() {
+    public void testItem() {
         assertEquals(1, item.getId());
         assertEquals("Dove Soap", item.getItemName());
         assertEquals(39.99, item.getPrice());
